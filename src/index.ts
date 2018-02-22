@@ -1,1 +1,5 @@
-export const helloWorld:boolean = true;
+import factory from './factory/factory';
+
+export {
+    factory,
+};

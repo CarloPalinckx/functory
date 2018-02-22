@@ -1,5 +1,5 @@
 {
-  "author": "myonlinestore",
+  "author": "carlo palinckx",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/CarloPalinckx/plainfactory/issues"
@@ -7,8 +7,9 @@
   "homepage": "https://github.com/CarloPalinckx/plainfactory#readme",
   "name": "plainfactory",
   "version": "0.0.0",
-  "description": "myonlinestore util",
+  "description": "plainfactory",
   "main": "dist/index.js",
+  "types": "src/index.d.ts",
   "devDependencies": {
     "@types/jest": "^22.0.1",
     "@types/node": "^9.3.0",

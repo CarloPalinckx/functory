@@ -18,7 +18,7 @@ describe('a curried factory function that allows for easy setting of defaults', 
     const defaults:any = { foo: null, bar: 'bar' };
 
     it('curries into a product', () => {
-        const constructionData = { foo: 'foo', bar: 'foo' };
+        const constructionData = { foo: 'foo', bar: 'foo', hurr:'durr' };
         const product = factory<Product>(defaults)(constructionData);
 
         expect(evaluate).toHaveBeenCalledTimes(1);

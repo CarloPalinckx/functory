@@ -1,7 +1,12 @@
 import evaluate from './evaluate';
 
 describe('a function that evaluates objects and throws an exception when the object is incomplete', () => {
-    const defaults = { foo:'foo', bar: 'bar' };
+    interface Product {
+        foo:string;
+        bar:string;
+    }
+
+    const defaults:Product = { foo:'foo', bar: 'bar' };
 
     it('evaluates successfully', () => {
         const evaluated = evaluate(defaults)({ foo: 'bar', bar: 'foo' });
@@ -11,21 +16,33 @@ describe('a function that evaluates objects and throws an exception when the obj
 
     it('throws an exception on property mismatch', () => {
         const fn = ():void => {
-            const constructionData:any = { foo: 1, bar: undefined };
-
-            evaluate(defaults)(constructionData);
+            evaluate(defaults)({ foo: 1, bar: undefined } as any);
         };
 
-        expect(fn).toThrow('Invalid construction, no match with defaults.');
+        expect(fn).toThrow('Invalid construction, no match with signature.');
     });
 
     it('throws an exception on extraneous properties', () => {
         const fn = ():void => {
-            const constructionData:any = { foo: 'bar', bar: 'foo', foobar: 'barfoo' };
-
-            evaluate(defaults)(constructionData);
+            evaluate(defaults)({ foo: 'bar', bar: 'foo', foobar: 'barfoo' } as any);
         };
 
-        expect(fn).toThrow('Invalid construction, no match with defaults.');
+        expect(fn).toThrow('Invalid construction, no match with signature.');
+    });
+
+    it('throws an exception when type guard is not passed, no-ops otherwise', () => {
+        const typeGuard = (subject:Product):boolean => {
+            return subject.bar.length === 3;
+        };
+
+        const evaluator = evaluate<Product>(defaults, typeGuard);
+        const product = evaluator({ foo: 'foo', bar: 'foo' });
+
+        const fn = ():void => {
+            evaluator({ foo: 'bar', bar: 'barbapapa' } as any);
+        };
+
+        expect(product).toEqual(product);
+        expect(fn).toThrow('Invalid construction, type guard not passed.');
     });
 });

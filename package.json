@@ -1,0 +1,38 @@
+{
+  "author": "myonlinestore",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CarloPalinckx/plainfactory/issues"
+  },
+  "homepage": "https://github.com/CarloPalinckx/plainfactory#readme",
+  "name": "plainfactory",
+  "version": "0.0.0",
+  "description": "myonlinestore util",
+  "main": "dist/index.js",
+  "devDependencies": {
+    "@types/jest": "^22.0.1",
+    "@types/node": "^9.3.0",
+    "ajv": "^6.1.1",
+    "awesome-typescript-loader": "^3.4.1",
+    "friendly-errors-webpack-plugin": "^1.6.1",
+    "jest": "^22.0.6",
+    "progress-bar-webpack-plugin": "^1.10.0",
+    "source-map-loader": "^0.2.3",
+    "ts-jest": "^22.0.1",
+    "tslint": "^5.7.0",
+    "tslint-config-airbnb": "^5.3.0-beta",
+    "typescript": "^2.6.2",
+    "webpack": "^3.10.0",
+    "webpack-dev-server": "^2.10.1"
+  },
+  "scripts": {
+    "test": "jest --config=./config/jest/jest.config.json --coverage",
+    "prepare": "npm run test && npm run build",
+    "build": "webpack --config=./config/webpack/webpack.config.js",
+    "watch": "webpack-dev-server --progress --config=./config/webpack/webpack.config.server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CarloPalinckx/plainfactory/issues"
+  }
+}

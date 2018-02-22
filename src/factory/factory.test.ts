@@ -1,16 +1,27 @@
 import factory from './factory';
+import evaluate from '../evaluate/evaluate';
 
-type Product = {
-    foo:string,
-    bar?:string,
-};
+jest.mock('../evaluate/evaluate', () => {
+    return jest.fn().mockImplementation(
+        () => {
+            return jest.fn().mockImplementation((subject:any) => subject);
+        },
+    );
+});
+
+interface Product {
+    foo:string;
+    bar:string;
+}
 
 describe('a curried factory function that allows for easy setting of defaults', () => {
+    const defaults:any = { foo: null, bar: 'bar' };
+
     it('curries into a product', () => {
-        const defaults:Product = { foo: 'bar', bar: 'foo' };
+        const constructionData = { foo: 'foo', bar: 'foo' };
+        const product = factory<Product>(defaults)(constructionData);
 
-        const product = factory<Product>(defaults)({ foo: 'foo' });
-
-        expect(product).toEqual({ foo: 'foo', bar: 'foo' });
+        expect(evaluate).toHaveBeenCalledTimes(1);
+        expect(product).toEqual(constructionData);
     });
 });

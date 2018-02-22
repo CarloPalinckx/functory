@@ -1,14 +1,14 @@
-/*
-spread objects are cast any because of open issue https://github.com/Microsoft/TypeScript/pull/13288
- */
+import evaluate from '../evaluate/evaluate';
 
-type Curried<T> = (constructionData:T) => Readonly<T>;
+// spread objects are cast to any because of open issue https://github.com/Microsoft/TypeScript/pull/13288
 
-const factory = <T>(defaults:T):Curried<T> => {
-    return (constructionData:Partial<T>):T => {
+type Curried<T extends Object> = (constructionData:T) => Readonly<T>;
+
+const factory = <T extends Object>(defaults:T):Curried<T> => {
+    return (constructionData:T):T => {
         return {
             ...defaults as any,
-            ...constructionData as any,
+            ...evaluate<T>(defaults)(constructionData) as any,
         };
     };
 };

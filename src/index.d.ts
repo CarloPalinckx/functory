@@ -1,1 +1,1 @@
-declare function factory<T>(defaults:T):() => Readonly<T>;
+declare function factory<T>(defaults:T):(constructionData:T) => Readonly<T>;

@@ -2,12 +2,12 @@
   "author": "carlo palinckx",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/CarloPalinckx/plainfactory/issues"
+    "url": "https://github.com/CarloPalinckx/fact/issues"
   },
-  "homepage": "https://github.com/CarloPalinckx/plainfactory#readme",
-  "name": "plainfactory",
+  "homepage": "https://github.com/CarloPalinckx/fact#readme",
+  "name": "fact",
   "version": "0.0.0",
-  "description": "plainfactory",
+  "description": "fact",
   "main": "dist/index.js",
   "types": "src/index.d.ts",
   "devDependencies": {
@@ -34,6 +34,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/CarloPalinckx/plainfactory/issues"
+    "url": "git+https://github.com/CarloPalinckx/fact/issues"
   }
 }

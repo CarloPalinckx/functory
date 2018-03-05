@@ -11,7 +11,7 @@ const factory = <T>(defaults:T):CurriedTypeGuard<T> => {
     const evaluator = evaluate(defaults);
 
     return (typeGuard:TypeGuard<T> = evaluator):CurriedProduct<T> => {
-        return (constructionData:T):T => {
+        return (constructionData:T):Readonly<T> => {
             if (typeGuard !== evaluator && !typeGuard(constructionData)) {
                 throw 'Invalid construction, type guard didn\'t pass';
             }

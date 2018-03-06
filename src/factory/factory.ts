@@ -7,8 +7,8 @@ export type TypeGuard<T> = (subject:T) => boolean;
 type CurriedTypeGuard<T> = (typeGuard?:TypeGuard<T>) => CurriedProduct<T>;
 type CurriedProduct<T extends Object> = (constructionData:T) => Readonly<T>;
 
-const factory = <T>(defaults:T):CurriedTypeGuard<T> => {
-    const evaluator = evaluate(defaults);
+const factory = <T>(signature:T):CurriedTypeGuard<T> => {
+    const evaluator = evaluate(signature);
 
     return (typeGuard:TypeGuard<T> = evaluator):CurriedProduct<T> => {
         return (constructionData:T):Readonly<T> => {
@@ -20,10 +20,7 @@ const factory = <T>(defaults:T):CurriedTypeGuard<T> => {
                 throw 'Invalid construction, evaluation didn\'t pass';
             }
 
-            return {
-                ...defaults as any,
-                ...constructionData as any,
-            };
+            return { ...constructionData as any };
         };
     };
 };

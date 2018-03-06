@@ -12,11 +12,11 @@ interface Product {
     bar:string;
 }
 
-describe('a curried factory function that allows for easy setting of defaults', () => {
-    const defaults:Product = { foo: 'foo', bar: 'bar' };
+describe('a curried factory function that allows for easy setting of signature', () => {
+    const signature:Product = { foo: 'foo', bar: 'bar' };
 
     it('curries into a product', () => {
-        const productFactory = factory(defaults)();
+        const productFactory = factory(signature)();
         const product = productFactory({ foo: 'bar', bar: 'foo' });
 
         expect(product).toEqual({ foo: 'bar', bar: 'foo' });
@@ -30,7 +30,7 @@ describe('a curried factory function that allows for easy setting of defaults', 
          * and fake a scenario where factory input is uncertain or untyped.
          */
         const constructionData:any = { foo: '', bar: 19.12 };
-        const productFactory = factory(defaults)();
+        const productFactory = factory(signature)();
 
         const fn = ():void => {
             productFactory(constructionData);
@@ -52,7 +52,7 @@ describe('a curried factory function that allows for easy setting of defaults', 
         };
 
         const failingData:Product = { foo: '', bar: '' };
-        const productFactory = factory(defaults)(typeGuard);
+        const productFactory = factory(signature)(typeGuard);
 
         const fn = ():void => {
             productFactory(failingData);

@@ -28,7 +28,7 @@
         "webpack-dev-server": "^2.10.1"
     },
     "scripts": {
-        "test": "jest --config=./config/jest/jest.config.json --coverage",
+        "test": "jest --config=./config/jest/jest.config.json",
         "prepare": "npm run test && npm run build",
         "build": "webpack --config ./config/webpack/webpack.config.js",
         "watch": "webpack-dev-server --progress --config ./config/webpack/webpack.config.server.js",

@@ -1,1 +1,2 @@
-# fact [![Build Status](https://travis-ci.org/CarloPalinckx/fact.svg?branch=master)](https://travis-ci.org/CarloPalinckx/fact)  [![Test Coverage](https://api.codeclimate.com/v1/badges/b61c1882ac6850e494ae/test_coverage)](https://codeclimate.com/github/CarloPalinckx/fact/test_coverage) [![Maintainability](https://api.codeclimate.com/v1/badges/b61c1882ac6850e494ae/maintainability)](https://codeclimate.com/github/CarloPalinckx/fact/maintainability)
+[![](https://travis-ci.org/CarloPalinckx/fact.svg?branch=master)](https://travis-ci.org/CarloPalinckx/fact) [![](https://api.codeclimate.com/v1/badges/541f4d2b04fb45f74b0a/maintainability)](https://codeclimate.com/github/CarloPalinckx/fact/maintainability)
+# fact

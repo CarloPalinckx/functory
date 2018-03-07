@@ -13,6 +13,10 @@ interface Product {
 }
 
 describe('a curried factory function that allows for easy setting of signature', () => {
+
+    /*
+     * Tip: You can use a type's signature as a mock in your tests by exporting it.
+     */
     const signature:Product = { foo: 'foo', bar: 'bar' };
 
     it('curries into a product', () => {
@@ -43,7 +47,7 @@ describe('a curried factory function that allows for easy setting of signature',
         (evaluate as jest.Mock).mockReturnValueOnce(() => true);
 
         /*
-         * the typeGuard is used to provide strict construction rules for a product.
+         * The typeGuard is used to provide strict construction rules for a product.
          * It should take the product as a argument and should have a boolean as
          * return value.
          */

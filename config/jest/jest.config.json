@@ -18,6 +18,7 @@
         "node"
     ],
     "coverageDirectory": "./reports/jest",
+    "coverageReporters": ["lcov"],
     "coverageThreshold": {
         "src": {
             "branches": 100,

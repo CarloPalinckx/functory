@@ -11,5 +11,6 @@ language: node_js
 node_js:
   - "7"
 script:
+  - npm run codestyle
   - npm run build
   - npm run test

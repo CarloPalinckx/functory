@@ -2,12 +2,12 @@
     "author": "carlo palinckx",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/CarloPalinckx/fact/issues"
+        "url": "https://github.com/CarloPalinckx/functory/issues"
     },
-    "homepage": "https://github.com/CarloPalinckx/fact#readme",
-    "name": "fact",
+    "homepage": "https://github.com/CarloPalinckx/functory#readme",
+    "name": "functory",
     "version": "0.0.0",
-    "description": "fact",
+    "description": "functory",
     "main": "dist/index.js",
     "types": "src/index.d.ts",
     "devDependencies": {
@@ -29,13 +29,13 @@
     },
     "scripts": {
         "test": "jest --config=./config/jest/jest.config.json --coverage",
-        "prepare": "npm run test && npm run build",
+        "prepare": "npm run codestyle && npm run test && npm run build",
         "build": "webpack --config ./config/webpack/webpack.config.js",
         "watch": "webpack-dev-server --progress --config ./config/webpack/webpack.config.server.js",
         "codestyle": "tslint --force --project ./config/typescript/tsconfig.json --config ./config/typescript/tslint.json ./src/**/*.ts"
     },
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/CarloPalinckx/fact/issues"
+        "url": "git+https://github.com/CarloPalinckx/functory/issues"
     }
 }

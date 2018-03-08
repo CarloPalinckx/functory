@@ -1,3 +1,3 @@
-import { TypeGuard } from './factory/factory';
+import { Factory } from './factory/factory';
 
-declare function factory<T>(signature:T, typeGuard:TypeGuard<T>):(constructionData:T) => Readonly<T>;
+declare const factory:Factory;

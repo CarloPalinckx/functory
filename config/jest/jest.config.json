@@ -17,8 +17,7 @@
         "json",
         "node"
     ],
-    "coverageDirectory": "./reports/jest",
-    "coverageReporters": ["lcov"],
+    "coverageDirectory": "./coverage",
     "coverageThreshold": {
         "src": {
             "branches": 100,

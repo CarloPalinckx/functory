@@ -7,7 +7,7 @@ export type TypeGuard<T> = (subject:T) => boolean;
 type CurriedTypeGuard<T> = (typeGuard?:TypeGuard<T>) => CurriedProduct<T>;
 type CurriedProduct<T extends Object> = (constructionData:T) => Readonly<T>;
 
-const factory = <T>(signature:T):CurriedTypeGuard<T> => {
+const factory = <T extends Object>(signature:T):CurriedTypeGuard<T> => {
     const evaluator = evaluate(signature);
 
     return (typeGuard:TypeGuard<T> = evaluator):CurriedProduct<T> => {

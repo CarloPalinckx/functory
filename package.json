@@ -6,7 +6,7 @@
     },
     "homepage": "https://github.com/CarloPalinckx/functory#readme",
     "name": "functory",
-    "version": "0.0.0",
+    "version": "0.0.2",
     "description": "functory",
     "main": "dist/index.js",
     "types": "src/index.d.ts",

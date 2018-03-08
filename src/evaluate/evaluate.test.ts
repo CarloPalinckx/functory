@@ -12,4 +12,10 @@ describe('a function that compares the key/values of two objects', () => {
 
         expect(passed).toBe(false);
     });
+
+    it('fails evaluation on extraneous keys', () => {
+        const passed = evaluate({ foo: '', bar: '' })({ foo: 'foo', bar: 12345, foobar: 'foobar' } as any);
+
+        expect(passed).toBe(false);
+    });
 });

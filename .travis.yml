@@ -1,16 +1,24 @@
 env:
   global:
-    - CC_TEST_REPORTER_ID=07fcf7c8b59e540a49a27e9412bc2929330d66502842c1818ad42d4c544752a8
+  - CC_TEST_REPORTER_ID=07fcf7c8b59e540a49a27e9412bc2929330d66502842c1818ad42d4c544752a8
 before_script:
-  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
-  - chmod +x ./cc-test-reporter
-  - ./cc-test-reporter before-build
+- curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+  > ./cc-test-reporter
+- chmod +x ./cc-test-reporter
+- "./cc-test-reporter before-build"
 after_script:
-  - ./cc-test-reporter after-build -t lcov --exit-code $TRAVIS_TEST_RESULT
+- "./cc-test-reporter after-build -t lcov --exit-code $TRAVIS_TEST_RESULT"
 language: node_js
 node_js:
-  - "7"
+- '7'
 script:
-  - npm run codestyle
-  - npm run build
-  - npm run test
+- npm run codestyle
+- npm run build
+- npm run test
+deploy:
+  api_key:
+    secure: CAMotVxE4hW3PYQwtjPsI1E9BdP5VQyE4xoaMVm7VepMwxnF2KcoBIY1MUQwgPL5E8SYac0IWx4TY4I+3fV+k0/tcAMYeQIQrL785eZk24huytG0+5EncAwFjqvmt9XgELHC+ViA152/UHcuq4tdkhK/hSWLHcCdw2sUupwdKYTKqY3O30TkTl5suLRr0X6kKiDHBLVq6r5Z6gkoxyAQ23wF1SxODeLkx0lnihLmB5v+0A7kbHqIkn0FdnAVxGg86kRe7O291zBBqgWE/YpF+vjRg6GQSXKkoSFY4G+EB4YdKLMwSayKmBfZeLwDrgW5HKbIp2EulyW0pJzROdfW2FfeC4d3+P+Fz2TmByJL3cOV0p74gLvuD1IVKFJBfULzqb+WC5tLNH/xhid2RdTdOljqlkEUt4ZEd9Z2Incm4SNT1KM/Wp0FPjcCJzGPyd5V9K0Le95YtH6RQDTlm3TTTEYw5N7LVi2r4Eq04yqTy60R/CMNrJABqIHqtncE56lcMXxWvYfQIIWjZlwuXAeUz766RFlh6OWmJ3PJ8SsSSjbdbD5GSxDqJX3V2a66jkaZFycGVSs+Aku9Ahj4tA+vSACUwz0KQmzybkvyDPPbZMUdqAPrYZsPl/hSX0+RH/hNt7cYpHDeCell7tY7gHHGvjfCdTTxPRO0SQYHdK75g6Q=
+  skip_cleanup: true
+  on:
+    tags: true
+    branch: master

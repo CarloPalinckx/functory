@@ -26,7 +26,6 @@ interface FooBar {
     readonly bar:number;
 }
 
-
 const signature:FooBar = {
     foo: '',
     bar: 0,

@@ -97,7 +97,5 @@ Check [factory.test.ts](https://github.com/CarloPalinckx/functory/blob/master/sr
 ## Constraints 🚩
 This module comes with a few constraints and best-practises.
 
-- **Mark your interfaces as readonly.** Try to use readonly in as much interfaces as possible. This helps a lot with unwanted mutability. Even though the factory method casts all products to Readonly.
-It's still a good practice if you want your data to be immutable.
-- **Prevent nested objects without their own factory.** If you really need to nest your data. Make sure that your nested objects have their own factory to ensure type identity.
+- **Prevent nested values without their own factory.** If you really need to nest your values. Make sure that your nested values have their own factory to ensure type identity.
 - **Only use serializable plain objects.** Avoid functions in interfaces at all times. As they make it hard to serialize the product.

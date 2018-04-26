@@ -10,14 +10,14 @@ export type Factory = <T extends Object>(signature:T) => CurriedTypeGuard<T>;
 const factory:Factory = <T extends Object>(signature:T):CurriedTypeGuard<T> => {
     const evaluator = evaluate(signature);
 
-    return (typeGuard:TypeGuard<T> = evaluator):CurriedProduct<T> => {
+    return (typeGuard?:TypeGuard<T>):CurriedProduct<T> => {
         return (constructionData:T):Readonly<T> => {
-            if (typeGuard !== evaluator && !typeGuard(constructionData)) {
-                throw 'Invalid construction, type guard didn\'t pass';
+            if (typeGuard !== undefined && !typeGuard(constructionData)) {
+                throw new Error('Invalid construction, type guard didn\'t pass');
             }
 
             if (!evaluator(constructionData)) {
-                throw 'Invalid construction, evaluation didn\'t pass';
+                throw new Error('Invalid construction, evaluation didn\'t pass');
             }
 
             return { ...constructionData as any };

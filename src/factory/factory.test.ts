@@ -12,21 +12,21 @@ interface Product {
     bar:string;
 }
 
-describe('a curried factory function that allows for easy setting of signature', () => {
+describe('factory', () => {
 
     /*
      * Tip: You can use a type's signature as a mock in your tests by exporting it.
      */
     const signature:Product = { foo: 'foo', bar: 'bar' };
 
-    it('curries into a product', () => {
+    it('should curry into a product', () => {
         const productFactory = factory(signature)();
         const product = productFactory({ foo: 'bar', bar: 'foo' });
 
         expect(product).toEqual({ foo: 'bar', bar: 'foo' });
     });
 
-    it('throws an exception on failing evaluation', () => {
+    it('should throw an exception on failing evaluation', () => {
         (evaluate as jest.Mock).mockReturnValueOnce(() => false);
 
         /*
@@ -43,7 +43,7 @@ describe('a curried factory function that allows for easy setting of signature',
         expect(fn).toThrow('Invalid construction, evaluation didn\'t pass');
     });
 
-    it('throws an exception on failing type guard', () => {
+    it('should throw an exception on failing type guard', () => {
         (evaluate as jest.Mock).mockReturnValueOnce(() => true);
 
         /*

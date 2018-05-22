@@ -12,15 +12,24 @@ const factory:Factory = <T extends Object>(signature:T):CurriedTypeGuard<T> => {
 
     return (typeGuard?:TypeGuard<T>):CurriedProduct<T> => {
         return (constructionData:T):Readonly<T> => {
-            if (typeGuard !== undefined && !typeGuard(constructionData)) {
-                throw new Error('Invalid construction, type guard didn\'t pass');
-            }
+            try {
+                if (typeGuard !== undefined && !typeGuard(constructionData)) {
+                    throw new Error(`Invalid construction, type guard didn\'t pass, `);
+                }
+    
+                if (!evaluator(constructionData)) {
+                    throw new Error('Invalid construction, evaluation didn\'t pass');
+                }
 
-            if (!evaluator(constructionData)) {
-                throw new Error('Invalid construction, evaluation didn\'t pass');
+                return { ...constructionData as any };
+            } catch (error) {
+                console.groupCollapsed(error);
+                console.error('signature was: ', signature);
+                console.error('constructionData was: ', constructionData);
+                console.groupEnd();
+                
+                throw new Error(error);
             }
-
-            return { ...constructionData as any };
         };
     };
 };

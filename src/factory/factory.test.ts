@@ -7,6 +7,12 @@ jest.mock('../evaluate/evaluate', () => {
     );
 });
 
+(global as any).console = {
+    error: jest.fn(),
+    groupCollapsed: jest.fn(),
+    groupEnd: jest.fn(),
+};
+
 interface Product {
     foo:string;
     bar:string;

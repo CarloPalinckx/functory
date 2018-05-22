@@ -71,4 +71,20 @@ describe('evaluate', () => {
         expect(validEvaluation).toBe(true);
         expect(invalidEvaluation).toBe(false);
     });
+
+    it('should handle array evaluation', () => {
+        const signature = {
+            items: [
+                { foo: 'bar' },
+            ],
+        };
+
+        const evaluation = evaluate(signature)({ items: [{ foo: 'bar' }] });
+        const emptyEvaluation = evaluate(signature)({ items: [] });
+        const invalidEvaluation = evaluate(signature)({ items: [{ bar: 'foo' } as any] });
+
+        expect(evaluation).toBe(true);
+        expect(emptyEvaluation).toBe(true);
+        expect(invalidEvaluation).toBe(false);
+    });
 });

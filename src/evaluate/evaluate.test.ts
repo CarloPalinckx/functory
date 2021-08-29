@@ -1,4 +1,4 @@
-import evaluate from './evaluate';
+import evaluate from "./evaluate"
 
 describe('evaluate', () => {
     it('should pass evaluation on correct values', () => {
@@ -88,3 +88,14 @@ describe('evaluate', () => {
         expect(invalidEvaluation).toBe(false);
     });
 });
+
+// @ponicode
+describe("evaluate.default", () => {
+    test("0", () => {
+        let callFunction: any = () => {
+            evaluate.default(undefined)
+        }
+    
+        expect(callFunction).not.toThrow()
+    })
+})
